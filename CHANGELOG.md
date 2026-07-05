@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.0.4 - 2026-07-05
+
+- Rebuilt the plugin icon as a square asset so Mautic plugin cards preserve
+  the official Yandex logo proportions.
+
 ## 1.0.3 - 2026-07-05
 
 - Fixed Mautic 7 form submission validation so SmartCaptcha fields are not

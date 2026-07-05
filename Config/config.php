@@ -62,7 +62,7 @@ switch (true) {
 return [
     'name'        => 'Yandex SmartCaptcha',
     'description' => 'Adds a Yandex SmartCaptcha field and server-side validation to Mautic forms. Configure the Client key and Server key in the Auth tab.',
-    'version'     => '1.0.3',
+    'version'     => '1.0.4',
     'author'      => 'Sales Snap',
 
     'services' => [
