@@ -20,9 +20,25 @@ This bundle adds a standalone Mautic form field backed by Yandex SmartCaptcha:
 Composer/Packagist installation is not published yet. Install the bundle
 manually into your Mautic plugins directory as `MauticYandexCaptchaBundle`.
 
+Use the plugin directory that matches your Mautic layout:
+
+- classic/legacy layout: `plugins/MauticYandexCaptchaBundle`
+- Composer layout with a `docroot` directory: `docroot/plugins/MauticYandexCaptchaBundle`
+
+Git clone installation:
+
 ```bash
 cd /path/to/mautic
 git clone https://github.com/AlexanderZlobinM1/mautic-yandex-smartcaptcha-bundle.git plugins/MauticYandexCaptchaBundle
+php bin/console mautic:plugins:reload
+php bin/console cache:clear
+```
+
+For Composer layout, clone into `docroot/plugins` instead:
+
+```bash
+cd /path/to/mautic
+git clone https://github.com/AlexanderZlobinM1/mautic-yandex-smartcaptcha-bundle.git docroot/plugins/MauticYandexCaptchaBundle
 php bin/console mautic:plugins:reload
 php bin/console cache:clear
 ```
@@ -33,7 +49,16 @@ If installing from a downloaded zip archive, extract it to:
 plugins/MauticYandexCaptchaBundle
 ```
 
-Then run:
+or, for Composer layout:
+
+```text
+docroot/plugins/MauticYandexCaptchaBundle
+```
+
+The final directory name must be exactly `MauticYandexCaptchaBundle`, not the
+auto-generated archive directory name.
+
+Then run from the Mautic root:
 
 ```bash
 php bin/console mautic:plugins:reload
