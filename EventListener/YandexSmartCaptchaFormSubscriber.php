@@ -69,7 +69,6 @@ class YandexSmartCaptchaFormSubscriber implements EventSubscriberInterface
                 'addLeadFieldList' => false,
                 'addIsRequired' => false,
                 'addDefaultValue' => false,
-                'addSaveResult' => false,
             ],
         ]);
 

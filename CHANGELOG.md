@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.0.3 - 2026-07-05
+
+- Fixed Mautic 7 form submission validation so SmartCaptcha fields are not
+  treated as view-only before the custom validator runs.
+
 ## 1.0.2 - 2026-07-05
 
 - Fixed the Mautic integration service id so Mautic 7 registers the plugin as a
