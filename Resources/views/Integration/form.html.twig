@@ -1,0 +1,39 @@
+<style>
+    .yandex-smartcaptcha-notes {
+        align-items: flex-start;
+    }
+
+    .yandex-smartcaptcha-notes__body {
+        display: block;
+        min-width: 0;
+        width: 100%;
+    }
+
+    .yandex-smartcaptcha-notes__instruction,
+    .yandex-smartcaptcha-notes__line {
+        margin: 0 0 10px;
+        line-height: 1.45;
+    }
+
+    .yandex-smartcaptcha-notes__line:last-child {
+        margin-bottom: 0;
+    }
+
+    .yandex-smartcaptcha-notes a {
+        font-weight: 600;
+        text-decoration: underline;
+    }
+</style>
+
+<div class="alert alert-info yandex-smartcaptcha-notes">
+    <div class="yandex-smartcaptcha-notes__body">
+        <p class="yandex-smartcaptcha-notes__instruction">
+            {{ 'mautic.integration.yandex_smartcaptcha.notes.instruction.before'|trans }}
+            <a href="{{ docs_url }}" target="_blank" rel="noopener noreferrer">{{ 'mautic.integration.yandex_smartcaptcha.notes.instruction.link'|trans }}</a>,
+            {{ 'mautic.integration.yandex_smartcaptcha.notes.instruction.after'|trans }}
+        </p>
+        <p class="yandex-smartcaptcha-notes__line">{{ 'mautic.integration.yandex_smartcaptcha.notes.client_key'|trans }}</p>
+        <p class="yandex-smartcaptcha-notes__line">{{ 'mautic.integration.yandex_smartcaptcha.notes.server_key'|trans }}</p>
+        <p class="yandex-smartcaptcha-notes__line">{{ 'mautic.integration.yandex_smartcaptcha.notes.token'|trans }}</p>
+    </div>
+</div>

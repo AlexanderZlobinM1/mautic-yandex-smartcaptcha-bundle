@@ -27,9 +27,19 @@ class YandexSmartCaptchaIntegration extends AbstractIntegration
         return 'Yandex SmartCaptcha';
     }
 
+    public function getDescription()
+    {
+        return 'Adds a Yandex SmartCaptcha field and server-side validation to Mautic forms.';
+    }
+
     public function getAuthenticationType()
     {
         return 'none';
+    }
+
+    public function getIcon()
+    {
+        return 'plugins/MauticYandexCaptchaBundle/Assets/img/yandex_smartcaptcha.jpg';
     }
 
     public function getPriority()
@@ -84,5 +94,20 @@ class YandexSmartCaptchaIntegration extends AbstractIntegration
     public function shouldFailOpen(): bool
     {
         return (bool) ($this->keys[self::FAIL_OPEN_FIELD] ?? false);
+    }
+
+    public function getFormNotes($section)
+    {
+        if ('custom' === $section) {
+            return [
+                'custom'     => true,
+                'template'   => '@MauticYandexCaptcha/Integration/form.html.twig',
+                'parameters' => [
+                    'docs_url' => 'https://yandex.cloud/ru/docs/smartcaptcha/quickstart',
+                ],
+            ];
+        }
+
+        return parent::getFormNotes($section);
     }
 }
