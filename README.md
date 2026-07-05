@@ -17,22 +17,28 @@ This bundle adds a standalone Mautic form field backed by Yandex SmartCaptcha:
 
 ## Installation
 
-Install the bundle into your Mautic plugins directory as `MauticYandexCaptchaBundle`.
+Composer/Packagist installation is not published yet. Install the bundle
+manually into your Mautic plugins directory as `MauticYandexCaptchaBundle`.
 
 ```bash
 cd /path/to/mautic
-composer require sales-snap/mautic-yandex-smartcaptcha-bundle
+git clone https://github.com/AlexanderZlobinM1/mautic-yandex-smartcaptcha-bundle.git plugins/MauticYandexCaptchaBundle
 php bin/console mautic:plugins:reload
 php bin/console cache:clear
 ```
 
-If installing from a zip archive, extract it to:
+If installing from a downloaded zip archive, extract it to:
 
 ```text
 plugins/MauticYandexCaptchaBundle
 ```
 
-Then reload plugins and clear cache.
+Then run:
+
+```bash
+php bin/console mautic:plugins:reload
+php bin/console cache:clear
+```
 
 ## Yandex setup
 
