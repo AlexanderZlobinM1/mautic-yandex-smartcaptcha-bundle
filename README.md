@@ -1,0 +1,73 @@
+# Mautic Yandex SmartCaptcha Bundle
+
+Yandex SmartCaptcha integration for Mautic forms.
+
+This bundle adds a standalone Mautic form field backed by Yandex SmartCaptcha:
+
+- plugin settings for the Yandex client key and server key;
+- a form field type named `Yandex SmartCaptcha`;
+- widget rendering through `https://smartcaptcha.cloud.yandex.ru/captcha.js`;
+- server-side token verification through `https://smartcaptcha.cloud.yandex.ru/validate`;
+- optional widget language setting per form field.
+
+## Compatibility
+
+- Mautic 5, 6 and 7
+- PHP 8.1+
+
+## Installation
+
+Install the bundle into your Mautic plugins directory as `MauticYandexCaptchaBundle`.
+
+```bash
+cd /path/to/mautic
+composer require sales-snap/mautic-yandex-smartcaptcha-bundle
+php bin/console mautic:plugins:reload
+php bin/console cache:clear
+```
+
+If installing from a zip archive, extract it to:
+
+```text
+plugins/MauticYandexCaptchaBundle
+```
+
+Then reload plugins and clear cache.
+
+## Yandex setup
+
+Create a SmartCaptcha in Yandex Cloud and copy both keys:
+
+- Client key: used by the browser widget.
+- Server key: used by Mautic to validate the submitted token.
+
+The protected form domain must be listed in the SmartCaptcha settings in
+Yandex Cloud.
+
+## Mautic setup
+
+1. Go to Mautic plugins.
+2. Open `Yandex SmartCaptcha`.
+3. Enable the plugin.
+4. Enter the client key and server key.
+5. Save and close.
+6. Edit a Mautic form and add the `Yandex SmartCaptcha` field.
+
+## Security behavior
+
+By default, validation is fail-closed:
+
+- missing token blocks submission;
+- missing server key blocks submission;
+- non-`ok` Yandex response blocks submission;
+- Yandex network or JSON errors block submission.
+
+The integration has an explicit `Allow submissions if Yandex validation is
+unavailable` option for installations that prefer fail-open behavior during
+provider outages.
+
+## Notes
+
+Yandex SmartCaptcha injects the submitted one-time token as `smart-token`.
+Mautic validates that token server-side using the configured server key and the
+visitor IP address when available.

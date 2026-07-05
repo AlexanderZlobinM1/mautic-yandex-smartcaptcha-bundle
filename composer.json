@@ -1,0 +1,32 @@
+{
+    "name": "sales-snap/mautic-yandex-smartcaptcha-bundle",
+    "description": "Yandex SmartCaptcha form field and validation plugin for Mautic.",
+    "type": "mautic-plugin",
+    "license": "GPL-3.0-or-later",
+    "authors": [
+        {
+            "name": "Sales Snap",
+            "email": "support@sales-snap.com"
+        }
+    ],
+    "keywords": [
+        "mautic",
+        "plugin",
+        "captcha",
+        "yandex",
+        "smartcaptcha"
+    ],
+    "autoload": {
+        "psr-4": {
+            "MauticPlugin\\MauticYandexCaptchaBundle\\": ""
+        }
+    },
+    "extra": {
+        "install-directory-name": "MauticYandexCaptchaBundle"
+    },
+    "require": {
+        "php": ">=8.1",
+        "ext-json": "*",
+        "mautic/core-lib": "^5.0 || ^6.0 || ^7.0"
+    }
+}

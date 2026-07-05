@@ -1,0 +1,67 @@
+{#
+  Variables expected from Mautic form renderer:
+  field, formName, fieldPage, contactFields, companyFields, inBuilder, fields,
+  inForm, required.
+#}
+{% set formName = formName|default('')|replace({'_': ''}) %}
+{% set order = field.order|default(0) %}
+{% set defaultLabelClass = defaultLabelClass|default('label') %}
+{% set labelAttributes = htmlAttributesStringToArray(field.labelAttributes|default('')) %}
+{% set containerAttributes = htmlAttributesStringToArray(field.containerAttributes|default('')) %}
+{% set language = field.properties.language|default('auto') %}
+{% set reserveHeight = field.properties.reserveHeight is defined ? field.properties.reserveHeight : true %}
+{% set clientKey = field.customParameters.client_key|default(null) %}
+
+{% set labelAttributes = labelAttributes|merge({
+    'class': labelAttributes.class|default([])|merge(['mauticform-' ~ defaultLabelClass]),
+}) %}
+
+{% set containerAttributes = containerAttributes|merge({
+    'id': 'mauticform' ~ formName ~ '_' ~ id,
+    'class': containerAttributes.class|default([])|merge([
+        'mauticform-row',
+        'mauticform-div-wrapper',
+        'mauticform-field-' ~ order,
+    ]),
+}) %}
+
+{% if field.parent and fields[field.parent] is defined %}
+    {% set values = field.conditions.values|join('|') %}
+    {% if field.conditions.any is not empty and 'notIn' != field.conditions.expr %}
+        {% set values = '*' %}
+    {% endif %}
+    {% set containerAttributes = containerAttributes|merge({
+        'data-mautic-form-show-on': fields[field.parent].alias ~ ':' ~ values,
+        'data-mautic-form-expr': field.conditions.expr,
+        'class': containerAttributes.class|merge(['mauticform-field-hidden']),
+    }) %}
+{% endif %}
+
+{% block yandex_smartcaptcha %}
+    {% if field.showLabel %}
+        <label {% for attrName, attrValue in labelAttributes %}{{ attrName }}="{% if attrValue is iterable %}{{ attrValue|join(' ') }}{% else %}{{ attrValue }}{% endif %}"{% endfor %}>
+            {{ field.label }}
+        </label>
+    {% endif %}
+
+    {% if inForm is defined and (true == inForm or inForm is not empty) %}
+        <div style="padding:10px;background:#f5f5f5;border:1px dashed #ccc;text-align:center;{% if reserveHeight %}height:100px;{% endif %}">
+            Yandex SmartCaptcha widget
+        </div>
+    {% else %}
+        <script src="https://smartcaptcha.cloud.yandex.ru/captcha.js" defer></script>
+
+        <div {% for attrName, attrValue in containerAttributes %}{{ attrName }}="{% if attrValue is iterable %}{{ attrValue|join(' ') }}{% else %}{{ attrValue }}{% endif %}"{% endfor %}>
+            <div style="position:relative;top:25px;padding-bottom:25px">
+                <span class="mauticform-errormsg" style="display:none;"></span>
+            </div>
+
+            <div
+                class="smart-captcha"
+                data-sitekey="{{ clientKey }}"
+                {% if language and language != 'auto' %}data-hl="{{ language }}"{% endif %}
+                {% if reserveHeight %}style="height:100px"{% endif %}
+            ></div>
+        </div>
+    {% endif %}
+{% endblock %}

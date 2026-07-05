@@ -1,0 +1,11 @@
+/.idea/
+/.vscode/
+/vendor/
+/node_modules/
+/.phpunit.cache/
+/.php-cs-fixer.cache
+composer.lock
+*.log
+*.zip
+*.tar.gz
+.DS_Store
