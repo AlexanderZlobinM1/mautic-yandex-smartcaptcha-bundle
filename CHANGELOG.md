@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.0.2 - 2026-07-05
+
+- Fixed the Mautic integration service id so Mautic 7 registers the plugin as a
+  configurable integration instead of showing only the generic bundle info view.
+- Added the standard `Assets/img/icon.png` fallback so the plugin card uses the
+  official Yandex icon even before integration metadata is loaded.
+
 ## 1.0.1 - 2026-07-05
 
 - Added the Yandex icon asset and wired it as the Mautic integration icon.

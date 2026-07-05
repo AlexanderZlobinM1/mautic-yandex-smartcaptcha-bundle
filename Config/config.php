@@ -62,7 +62,7 @@ switch (true) {
 return [
     'name'        => 'Yandex SmartCaptcha',
     'description' => 'Adds a Yandex SmartCaptcha field and server-side validation to Mautic forms. Configure the Client key and Server key in the Auth tab.',
-    'version'     => '1.0.1',
+    'version'     => '1.0.2',
     'author'      => 'Sales Snap',
 
     'services' => [
@@ -87,7 +87,7 @@ return [
             ],
         ],
         'integrations' => [
-            'mautic.integration.yandex_smartcaptcha' => [
+            'mautic.integration.yandexsmartcaptcha' => [
                 'class' => YandexSmartCaptchaIntegration::class,
                 'arguments' => $defaultIntegrationArguments,
             ],

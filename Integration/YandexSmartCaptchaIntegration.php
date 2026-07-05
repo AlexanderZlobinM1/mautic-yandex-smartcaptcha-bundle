@@ -39,7 +39,7 @@ class YandexSmartCaptchaIntegration extends AbstractIntegration
 
     public function getIcon()
     {
-        return 'plugins/MauticYandexCaptchaBundle/Assets/img/yandex_smartcaptcha.jpg';
+        return 'plugins/MauticYandexCaptchaBundle/Assets/img/icon.png';
     }
 
     public function getPriority()
